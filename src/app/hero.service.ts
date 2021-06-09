@@ -17,4 +17,11 @@ export class HeroService {
     this.messageService.add('HeroService: fetched heroes');
     return heroes;
   }
+
+  getHero(id: Number): Observable<Hero> {
+    // ! means that we are certain that hero will not be null or undefined
+    const hero = HEROES.find(hero => hero.id == id)!;
+    this.messageService.add(`HeroService: fetched hero id=${id}`)
+    return of(hero);
+  }
 }
